@@ -10,7 +10,7 @@ namespace WC.Infra.Data.Entities
     {
         public Guid Id { get; set; }
         public string Url { get; set; }
-        public bool WasScraping { get; set; } = false;
+        public bool WasScraping { get; set; }
         public DateTime Create_At { get; set; }
         public DateTime Update_At { get; set; }
     }

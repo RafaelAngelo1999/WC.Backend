@@ -40,7 +40,12 @@ namespace WC.BackEnd
             services.AddScoped<IInserirProdutoAppService, InserirProdutoAppService>();
             services.AddScoped<IProdutoService, ProdutoService>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
+
+            services.AddScoped<IInserirRotaSementeAppService, InserirRotaSementeAppService>();
+            services.AddScoped<IRotaSementeService, RotaSementeService>();
+            services.AddScoped<IRotaSementeRepository, RotaSementeRepository>();
             #endregion
+
             services.AddControllers();
 
 

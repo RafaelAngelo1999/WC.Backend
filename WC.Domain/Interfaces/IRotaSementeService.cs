@@ -1,10 +1,11 @@
-﻿using System;
+﻿
+using System;
 using System.Threading.Tasks;
 using WC.Domain.DTO;
 
-namespace WC.AppService.Interfaces
+namespace WC.Domain.Interfaces
 {
-    public interface IInserirRotaSementeAppService
+    public interface IRotaSementeService
     {
         Task<Guid> InserirRotaSementeAsync(RotaSementeDto rotaSementeDto);
     }

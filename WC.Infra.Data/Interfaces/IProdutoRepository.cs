@@ -6,6 +6,6 @@ namespace WC.Infra.Data.Interfaces
 {
     public interface IProdutoRepository
     {
-        Task<Guid> InserirCotacaoAsync(ProdutoEntity produtoEntity);
+        Task<Guid> InserirProdutoAsync(ProdutoEntity produtoEntity);
     }
 }

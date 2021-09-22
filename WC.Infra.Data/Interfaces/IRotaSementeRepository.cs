@@ -6,6 +6,6 @@ namespace WC.Infra.Data.Interfaces
 {
     public interface IRotaSementeRepository
     {
-        Task<Guid> InserirRotaSementeAsync(ProdutoEntity produtoEntity);
+        Task<Guid> InserirRotaSementeAsync(RotaSementeEntity rotaSementeEntity);
     }
 }

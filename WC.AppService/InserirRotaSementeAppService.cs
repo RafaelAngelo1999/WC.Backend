@@ -6,18 +6,18 @@ using WC.Domain.Interfaces;
 
 namespace WC.AppService
 {
-    public class InserirProdutoAppService : IInserirProdutoAppService
+    public class InserirRotaSementeAppService : IInserirRotaSementeAppService
     {
-        private readonly IProdutoService _produtoService;
+        private readonly IRotaSementeService _rotaSementeService;
 
-        public InserirProdutoAppService(IProdutoService produtoService)
+        public InserirRotaSementeAppService(IRotaSementeService rotaSementeService)
         {
-            this._produtoService = produtoService;
+            this._rotaSementeService = rotaSementeService;
         }
 
-        public async Task<Guid> InserirProdutoAsync(ProdutoDto produtoEntity)
+        public async Task<Guid> InserirRotaSementeAsync(RotaSementeDto rotaSementeDto)
         {
-            return await _produtoService.InserirProdutoAsync(produtoEntity);
+            return await _rotaSementeService.InserirRotaSementeAsync(rotaSementeDto);
         }
     }
 }

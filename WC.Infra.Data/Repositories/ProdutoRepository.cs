@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Infrastructure.Repository.Generics;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Infrastructure.Repository.Generics;
 using WC.Infra.Data.Entities;
 using WC.Infra.Data.Interfaces;
 
@@ -64,10 +63,8 @@ namespace WC.Infra.Data.Repositories
 
             return NoContent();
         }
-        public async Task<Guid> InserirCotacaoAsync(ProdutoEntity produtoEntity)
+        public async Task<Guid> InserirProdutoAsync(ProdutoEntity produtoEntity)
         {
-            produtoEntity.Create_At = DateTime.Now;
-            produtoEntity.Update_At = DateTime.Now;
             _context.Produtos.Add(produtoEntity);
             await _context.SaveChangesAsync();
 

@@ -28,7 +28,7 @@ namespace WC.Domain.Services
 
             var produtoEntity = _mapper.Map<ProdutoEntity>(produtoDto);
 
-            return await _produtoRepository.InserirCotacaoAsync(produtoEntity);
+            return await _produtoRepository.InserirProdutoAsync(produtoEntity);
 
         }
     }

@@ -11,7 +11,7 @@ namespace WC.Infra.Data.Entities
         public Guid Id { get; set; }
         public string Url { get; set; }
         public string Pesquisa { get; set; }
-        public List<RotaRamificadaEntity> Imagens { get; set; }
+        public List<RotaRamificadaEntity> RotasRamificadas { get; set; }
         public DateTime Create_At { get; set; }
         public DateTime Update_At { get; set; }
     }

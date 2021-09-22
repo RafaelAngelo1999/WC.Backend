@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WC.Infra.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210918151949_initial")]
+    [Migration("20210919124834_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,10 +51,10 @@ namespace WC.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e6f0c0fa-4d41-42b8-9931-15f5f2c8eca8"),
-                            Create_At = new DateTime(2021, 9, 18, 12, 19, 49, 140, DateTimeKind.Local).AddTicks(6247),
+                            Id = new Guid("d9f3de3b-54fc-42af-8b57-bb1390f6ac86"),
+                            Create_At = new DateTime(2021, 9, 19, 9, 48, 34, 227, DateTimeKind.Local).AddTicks(9090),
                             Name = "Rafael",
-                            Update_At = new DateTime(2021, 9, 18, 12, 19, 49, 141, DateTimeKind.Local).AddTicks(9306),
+                            Update_At = new DateTime(2021, 9, 19, 9, 48, 34, 228, DateTimeKind.Local).AddTicks(7788),
                             Url = "rafael.angelo@gmail.com"
                         });
                 });
@@ -68,19 +68,28 @@ namespace WC.Infra.Data.Migrations
                     b.Property<DateTime>("Create_At")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("MediaAvaliacao")
+                    b.Property<float>("EstoqueQuantidade")
                         .HasColumnType("real");
+
+                    b.Property<int>("MediaAvaliacao")
+                        .HasColumnType("int");
 
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<float>("Preco")
+                        .HasColumnType("real");
+
+                    b.Property<float>("PrecoPromocional")
+                        .HasColumnType("real");
 
                     b.Property<string>("SKU")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Titulo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Update_At")
@@ -91,6 +100,57 @@ namespace WC.Infra.Data.Migrations
                     b.ToTable("Produtos");
                 });
 
+            modelBuilder.Entity("WC.Infra.Data.Entities.RotaRamificadaEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Create_At")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid?>("RotaSementeEntityId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Update_At")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("WasScraping")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RotaSementeEntityId");
+
+                    b.ToTable("RotasRamificada");
+                });
+
+            modelBuilder.Entity("WC.Infra.Data.Entities.RotaSementeEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Create_At")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Pesquisa")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Update_At")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RotasSemente");
+                });
+
             modelBuilder.Entity("WC.Infra.Data.Entities.ImagemProdutoEntity", b =>
                 {
                     b.HasOne("WC.Infra.Data.Entities.ProdutoEntity", null)
@@ -98,9 +158,21 @@ namespace WC.Infra.Data.Migrations
                         .HasForeignKey("ProdutoEntityId");
                 });
 
+            modelBuilder.Entity("WC.Infra.Data.Entities.RotaRamificadaEntity", b =>
+                {
+                    b.HasOne("WC.Infra.Data.Entities.RotaSementeEntity", null)
+                        .WithMany("RotasRamificadas")
+                        .HasForeignKey("RotaSementeEntityId");
+                });
+
             modelBuilder.Entity("WC.Infra.Data.Entities.ProdutoEntity", b =>
                 {
                     b.Navigation("Imagens");
+                });
+
+            modelBuilder.Entity("WC.Infra.Data.Entities.RotaSementeEntity", b =>
+                {
+                    b.Navigation("RotasRamificadas");
                 });
 #pragma warning restore 612, 618
         }

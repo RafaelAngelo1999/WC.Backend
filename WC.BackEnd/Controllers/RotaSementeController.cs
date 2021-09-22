@@ -1,12 +1,15 @@
-﻿using System;
+﻿using AutoMapper;
+using Infrastructure.Repository.Generics;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Infrastructure.Repository.Generics;
+using WC.AppService.Interfaces;
+using WC.Domain.DTO;
 using WC.Infra.Data.Entities;
+using WC.WebApi.Model;
 
 namespace WC.WebApi.Controllers
 {
@@ -15,10 +18,14 @@ namespace WC.WebApi.Controllers
     public class RotaSementeController : ControllerBase
     {
         private readonly AppDbContext _context;
+        private readonly IMapper _mapper;
+        private readonly IInserirRotaSementeAppService _inserirRotaSementeAppService;
 
-        public RotaSementeController(AppDbContext context)
+        public RotaSementeController(AppDbContext context, IMapper mapper, IInserirRotaSementeAppService inserirRotaSementeAppService)
         {
             _context = context;
+            _mapper = mapper;
+            _inserirRotaSementeAppService = inserirRotaSementeAppService;
         }
 
         // GET: api/RotaSemente
@@ -76,12 +83,13 @@ namespace WC.WebApi.Controllers
         // POST: api/RotaSemente
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<RotaSementeEntity>> PostRotaSementeEntity(RotaSementeEntity rotaSementeEntity)
+        public async Task<IActionResult> InserirRotaSementeAsync(RotaSementeModel rotaSementeModel)
         {
-            _context.RotaSementeEntity.Add(rotaSementeEntity);
-            await _context.SaveChangesAsync();
+            var rotaSementeDto = _mapper.Map<RotaSementeDto>(rotaSementeModel);
 
-            return CreatedAtAction("GetRotaSementeEntity", new { id = rotaSementeEntity.Id }, rotaSementeEntity);
+            var rotaSementeId = await _inserirRotaSementeAppService.InserirRotaSementeAsync(rotaSementeDto);
+
+            return CreatedAtAction("GetRotaSementeEntity", new { id = rotaSementeId }, rotaSementeModel);
         }
 
         // DELETE: api/RotaSemente/5

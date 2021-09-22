@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace WC.WebApi.Model
 {
-    public class ImagemProdutoModel
+    public class RotaSementeModel
     {
-        public Guid Id { get; set; }
         public string Url { get; set; }
-        public string Name { get; set; }
+        public string Pesquisa { get; set; }
+        public List<RotaRamificadaModel> RotasRamificadas { get; set; }
     }
 }
