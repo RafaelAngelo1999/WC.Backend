@@ -44,6 +44,16 @@ namespace WC.BackEnd
             services.AddScoped<IInserirRotaSementeAppService, InserirRotaSementeAppService>();
             services.AddScoped<IRotaSementeService, RotaSementeService>();
             services.AddScoped<IRotaSementeRepository, RotaSementeRepository>();
+
+            services.AddScoped<IExecutarWebCrawlerAppService, ExecutarWebCrawlerAppService>();
+            services.AddScoped<IWebCrawlerService, WebCrawlerService>();
+
+            services.AddScoped<IExecutarWebCrawlerAppService, ExecutarWebCrawlerAppService>();
+            services.AddScoped<IWebScrapingService, WebScrapingService>();
+
+            services.AddScoped<IRotaRamificadaService, RotaRamificadaService>();
+            services.AddScoped<IRotaRamificadaRepository, RotaRamificadaRepository>();
+
             #endregion
 
             services.AddControllers();

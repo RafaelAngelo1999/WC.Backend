@@ -19,13 +19,15 @@ namespace WC.WebApi.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IMapper _mapper;
+        private readonly IExecutarWebCrawlerAppService _executarWebCrawlerAppService;
         private readonly IInserirRotaSementeAppService _inserirRotaSementeAppService;
 
-        public RotaSementeController(AppDbContext context, IMapper mapper, IInserirRotaSementeAppService inserirRotaSementeAppService)
+        public RotaSementeController(AppDbContext context, IMapper mapper, IInserirRotaSementeAppService inserirRotaSementeAppService, IExecutarWebCrawlerAppService executarWebCrawlerAppService)
         {
             _context = context;
             _mapper = mapper;
             _inserirRotaSementeAppService = inserirRotaSementeAppService;
+            _executarWebCrawlerAppService = executarWebCrawlerAppService;
         }
 
         // GET: api/RotaSemente
@@ -92,6 +94,17 @@ namespace WC.WebApi.Controllers
             return CreatedAtAction("GetRotaSementeEntity", new { id = rotaSementeId }, rotaSementeModel);
         }
 
+        // POST: api/RotaSemente
+        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [HttpPost("ExecutarWebCrawler")]
+        public async Task<IActionResult> ExecutarWebCrawler(string nomeProduto)
+        {
+            RotaSementeModel rotaSementeModel = new RotaSementeModel();
+
+            var rotaSementeId = await _executarWebCrawlerAppService.ExecutarWebCrawlerAsync(nomeProduto);
+
+            return CreatedAtAction("GetRotaSementeEntity", new { id = rotaSementeId }, rotaSementeModel);
+        }
         // DELETE: api/RotaSemente/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRotaSementeEntity(Guid id)
