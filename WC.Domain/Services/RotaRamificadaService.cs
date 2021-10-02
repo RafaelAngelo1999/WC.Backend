@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -24,25 +25,19 @@ namespace WC.Domain.Services
             this._mapper = mapper;
         }
 
-        public async Task ExecutarWebScrapingAsync()
+        public async Task<List<RotaRamificadaDto>> ObterRotaRamificadaNotScrapingAsync()
         {
-            //Validate.That(rotaRamificadaDto.Url).IsNotNullOrWhiteSpace("MENSAGEM - Atributo URL Invalido");
+            var rotaRamificadaEntitys = await _rotaRamificadaRepository.ObterRotaRamificadaNotScrapingAsync();
 
-            //var rotaRamificadaDtoEntity = _mapper.Map<RotaSementeEntity>(rotaSementeDto);
-
-            //var rotaRamificadaEntity = await _rotaRamificadaRepository.ObterRotaRamificadaNotScrapingAsync();
-
-            //await ExecutarWebScrapingAsync(rotaRamificadaEntity);
-
+            return _mapper.Map<IEnumerable<RotaRamificadaEntity>, List<RotaRamificadaDto>>(rotaRamificadaEntitys);
         }
 
-        public async Task ExecutarWebScrapingAsync(IEnumerable<RotaRamificadaEntity> rotaRamificadaEntity)
+        public async Task AtualizarRotaRamificadaAsync(RotaRamificadaDto rotaRamificadaDto)
         {
-            //if (rotaRamificadaEntity.Any())
-            //{
-            //    //ajuda lucão
+            var rotaRamificadaEntity = _mapper.Map<RotaRamificadaDto, RotaRamificadaEntity>(rotaRamificadaDto);
 
-            //}
+            await _rotaRamificadaRepository.AtualizarRotaRamificadaAsync(rotaRamificadaEntity.Id, rotaRamificadaEntity);
         }
+
     }
 }

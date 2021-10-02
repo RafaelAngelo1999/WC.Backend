@@ -26,7 +26,7 @@ namespace WC.Domain.Services
         {
             Validate.That(rotaSementeDto.Url).IsNotNullOrWhiteSpace("MENSAGEM - Atributo URL Invalido");
 
-            var rotaSementeEntity = _mapper.Map<RotaSementeEntity>(rotaSementeDto);
+            var rotaSementeEntity = _mapper.Map<RotaSementeDto, RotaSementeEntity>(rotaSementeDto);
 
             return await _rotaSementeRepository.InserirRotaSementeAsync(rotaSementeEntity);
 

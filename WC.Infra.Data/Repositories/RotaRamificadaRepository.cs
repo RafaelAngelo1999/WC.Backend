@@ -33,13 +33,12 @@ namespace WC.Infra.Data.Repositories
 
             if (rotaRamificadaEntity == null)
             {
-                //return NotFound();
+                throw new AplicacaoException("Não foi encontrado registro");
             }
 
             return rotaRamificadaEntity;
         }
 
-        // GET: api/RotaSemente/5
         public async Task<IEnumerable<RotaRamificadaEntity>> ObterRotaRamificadaNotScrapingAsync()
         {
             var rotaRamificadaEntity =  _context.RotaRamificadaEntity.Where(c => c.WasScraping == false)

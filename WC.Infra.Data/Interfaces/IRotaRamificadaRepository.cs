@@ -9,5 +9,6 @@ namespace WC.Infra.Data.Interfaces
     {
         Task<IEnumerable<RotaRamificadaEntity>> ObterRotaRamificadaNotScrapingAsync();
         Task AtualizarRotaRamificadaAsync(Guid idRotaRamificada, RotaRamificadaEntity rotaRamificadaEntity);
+        Task<RotaRamificadaEntity> ObterRotaRamificadaAsync(Guid id);
     }
 }

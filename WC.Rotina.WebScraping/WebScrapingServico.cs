@@ -48,11 +48,11 @@ namespace WC.Rotina
 
         public async Task ExecutarServicoAsync()
         {
-            Logger.LogInformation("ROTINA PARA ATUALIZAR STATUS DE COTAÇÕES INICIADA...");
+            Logger.LogInformation("ROTINA PARA SCRAPING INICIADA ...");
 
             await ExecutarAppServices().ConfigureAwait(false);
 
-            Logger.LogInformation("ROTINA PARA ATUALIZAR STATUS DE COTAÇÕES FINALIZADA");
+            Logger.LogInformation("ROTINA PARA SCRAPING FINALIZADA");
         }
 
         private async Task ExecutarAppServices()

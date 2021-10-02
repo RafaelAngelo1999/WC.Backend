@@ -48,7 +48,7 @@ namespace WC.Shared.Util
                        Olá, ##destinatario##
                     </p>
                     <p>
-                        Ja foram extraidos ##quantidadeExtraida## dos ##quantidadeRegistro## mapeados, cerca de ##porcetagemExtraida##.  
+                        Ja foram extraidos ##quantidadeExtraida## dos ##quantidadeRegistro## produtos mapeados nas tabelas, cerca de ##porcetagemExtraida##.  
                     </p>          
                     <p>
                          Para visualizar mais detalhes acesse o DashBoard.

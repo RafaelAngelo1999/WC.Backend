@@ -30,13 +30,13 @@ namespace WC.Domain.Services
         {
 
             string email = "rafaelangelowow@gmail.com";
-            string subject = "Subject Teste";
+            string subject = "FeedBack Scraping";
 
             string message = Constantes.Email.TEMPLATE_EMAIL_FEEDBACK
                 .Replace("##destinatario##", "Rafael Angelo")
-                .Replace("quantidadeExtraida", "2.000")
-                .Replace("quantidadeRegistro", "18.000")
-                .Replace("porcetagemExtraida", "80%");
+                .Replace("##quantidadeExtraida##", "2.000")
+                .Replace("##quantidadeRegistro##", "18.000")
+                .Replace("##porcetagemExtraida##", "80%");
 
             Execute(email, subject, message).Wait();
 
