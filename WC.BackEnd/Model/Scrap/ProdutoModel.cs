@@ -9,7 +9,7 @@ namespace WC.WebApi.Model
     {
         public string Titulo { get; set; }
         public string Descricao { get; set; }
-        public string Model { get; set; }
+        public string Categoria { get; set; }
         public string SKU { get; set; }
         public float EstoqueQuantidade { get; set; }
         public int MediaAvaliacao { get; set; }

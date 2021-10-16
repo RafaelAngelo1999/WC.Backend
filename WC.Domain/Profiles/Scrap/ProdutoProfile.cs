@@ -15,7 +15,7 @@ namespace WC.Domain.Profiles
         {
             CreateMap<ProdutoDto, ProdutoEntity>();
 
-            CreateMap<ProdutoEntity, ProdutoDto > ();
+            CreateMap<ProdutoEntity, ProdutoDto>();
         }
     }
 }

@@ -10,6 +10,7 @@ using WC.AppService.Interfaces;
 using WC.Domain.DTO;
 using WC.Infra.Data.Entities;
 using WC.WebApi.Model;
+using WC.Shared.Util;
 
 namespace WC.WebApi.Controllers
 {
@@ -97,7 +98,7 @@ namespace WC.WebApi.Controllers
         // POST: api/RotaSemente
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost("ExecutarWebCrawler")]
-        public async Task<IActionResult> ExecutarWebCrawler(string nomeProduto)
+        public async Task<IActionResult> ExecutarWebCrawler(string nomeProduto, Enums.Ecommercer ecommerce)
         {
             RotaSementeModel rotaSementeModel = new RotaSementeModel();
 

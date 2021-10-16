@@ -11,7 +11,7 @@ namespace WC.Domain.DTO
         public Guid Id { get; set; } = Guid.NewGuid();
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Model { get; set; }
+        public string Categoria { get; set; }
         public string SKU { get; set; }
         public float MediaAvaliacao { get; set; }
         public List<ImagemProdutoDto> Imagens { get; set; }

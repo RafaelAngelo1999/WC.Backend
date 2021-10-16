@@ -55,6 +55,9 @@ namespace WC.Shared.Util
                     </p>
                   </body>
                 </html>";
+
+            public const string SITE_MAGINELUIZA = "https://www.magazineluiza.com.br/";
+
         }
     }
 }
