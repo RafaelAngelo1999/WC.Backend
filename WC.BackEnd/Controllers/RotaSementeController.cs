@@ -102,7 +102,7 @@ namespace WC.WebApi.Controllers
         {
             RotaSementeModel rotaSementeModel = new RotaSementeModel();
 
-            var rotaSementeId = await _executarWebCrawlerAppService.ExecutarWebCrawlerAsync(nomeProduto);
+            var rotaSementeId = await _executarWebCrawlerAppService.ExecutarWebCrawlerAsync(nomeProduto, ecommerce);
 
             return CreatedAtAction("GetRotaSementeEntity", new { id = rotaSementeId }, rotaSementeModel);
         }

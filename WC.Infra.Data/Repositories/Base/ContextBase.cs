@@ -13,7 +13,6 @@ namespace Infrastructure.Repository.Generics
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-        //
         public DbSet<ProdutoEntity> Produtos { get; set; }
         public DbSet<ImagemProdutoEntity> ImagensProdutos { get; set; }
         public DbSet<RotaRamificadaEntity> RotaRamificadaEntity { get; set; }

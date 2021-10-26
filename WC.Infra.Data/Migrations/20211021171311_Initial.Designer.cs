@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace WC.Infra.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20210919124834_initial")]
-    partial class initial
+    [Migration("20211021171311_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -51,10 +51,10 @@ namespace WC.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d9f3de3b-54fc-42af-8b57-bb1390f6ac86"),
-                            Create_At = new DateTime(2021, 9, 19, 9, 48, 34, 227, DateTimeKind.Local).AddTicks(9090),
+                            Id = new Guid("591bc795-32a1-48e0-ab49-37c3b87a142b"),
+                            Create_At = new DateTime(2021, 10, 21, 14, 13, 11, 105, DateTimeKind.Local).AddTicks(2466),
                             Name = "Rafael",
-                            Update_At = new DateTime(2021, 9, 19, 9, 48, 34, 228, DateTimeKind.Local).AddTicks(7788),
+                            Update_At = new DateTime(2021, 10, 21, 14, 13, 11, 106, DateTimeKind.Local).AddTicks(1899),
                             Url = "rafael.angelo@gmail.com"
                         });
                 });
@@ -64,6 +64,9 @@ namespace WC.Infra.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Categoria")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Create_At")
                         .HasColumnType("datetime2");
@@ -76,9 +79,6 @@ namespace WC.Infra.Data.Migrations
 
                     b.Property<int>("MediaAvaliacao")
                         .HasColumnType("int");
-
-                    b.Property<string>("Model")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<float>("Preco")
                         .HasColumnType("real");

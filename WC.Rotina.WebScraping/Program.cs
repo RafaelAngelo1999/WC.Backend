@@ -50,17 +50,23 @@ namespace WC.Rotina.WebScraping
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    IConfiguration configuration = hostContext.Configuration;
+                    IConfiguration Configuration = hostContext.Configuration;
 
-                    var optionBuilder = new DbContextOptionsBuilder<AppDbContext>();
-                    optionBuilder.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-
-                    services.AddScoped(d => new AppDbContext(optionBuilder.Options));
+                    services.AddDbContext<AppDbContext>(options =>
+                    {
+                        options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")).UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+                    });
 
                     #region InjecaoClass
+                    services.AddScoped<IInserirProdutoAppService, InserirProdutoAppService>();
+                    services.AddScoped<IProdutoService, ProdutoService>();
+                    services.AddScoped<IProdutoRepository, ProdutoRepository>();
                     services.AddScoped<IExecutarWebScrapingAppService, ExecutarWebScrapingAppService>();
                     services.AddScoped<IRotaRamificadaService, RotaRamificadaService>();
                     services.AddScoped<IRotaRamificadaRepository, RotaRamificadaRepository>();
+                    services.AddScoped<IWebScrapingHavanService, WebScrapingHavanService>();
+                    services.AddScoped<IWebScrapingService, WebScrapingService>();
+                    services.AddScoped<IHttpClientService, HttpClientService>();
                     #endregion
 
                     var mappingConfig = new MapperConfiguration(mc =>

@@ -1,5 +1,6 @@
 ﻿using WC.Infra.Data.Contexts.Interfaces;
 using System;
+using System.Threading.Tasks;
 
 namespace WC.AppService.Base
 {
@@ -60,6 +61,27 @@ namespace WC.AppService.Base
             {
                 InicializarTransacao();
                 T resultado = func.Invoke();
+                ConfirmarTransacao();
+
+                return resultado;
+            }
+            catch
+            {
+                DesfazerTransacao();
+                throw;
+            }
+        }
+
+        protected async Task<T> ExecutarEmTransacaoAsync<T>(Func<T> func)
+        {
+            try
+            {
+                InicializarTransacao();
+
+                T resultado = await Task.Run(() => func.Invoke()).ConfigureAwait(false);
+
+                Task.WaitAll(resultado as Task);
+
                 ConfirmarTransacao();
 
                 return resultado;

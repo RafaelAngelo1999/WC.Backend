@@ -62,7 +62,6 @@ namespace WC.Domain.Services
 
             //outras opções
             //mail.Attachments.Add(new Attachment(arquivo));
-            //
 
             using (SmtpClient smtp = new SmtpClient(_emailSettings.Servidor, _emailSettings.Port))
             {

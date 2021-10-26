@@ -4,6 +4,7 @@ using WC.AppService.Interfaces;
 using WC.Domain.DTO;
 using WC.Domain.Interfaces;
 using WC.AppService.Base;
+using WC.Shared.Util;
 
 namespace WC.AppService
 {
@@ -18,9 +19,9 @@ namespace WC.AppService
             this._rotaSementeService = rotaSementeService;
             this._webCrawlerService = webCrawlerService;
         }
-        public async Task<Guid> ExecutarWebCrawlerAsync(string nomeProduto)
+        public async Task<Guid> ExecutarWebCrawlerAsync(string nomeProduto, Enums.Ecommercer ecommerce)
         {
-            var rotaSemente = await _webCrawlerService.ExecutarWebCrawlerAsync(nomeProduto).ConfigureAwait(false);
+            var rotaSemente = await _webCrawlerService.ExecutarWebCrawlerAsync(nomeProduto, ecommerce).ConfigureAwait(false);
 
             return await _rotaSementeService.InserirRotaSementeAsync(rotaSemente);
         }

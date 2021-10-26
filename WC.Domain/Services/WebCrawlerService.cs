@@ -17,11 +17,8 @@ namespace WC.Domain.Services
 {
     public class WebCrawlerService : IWebCrawlerService
     {
-        private readonly IWebCrawlerMagazineLuizaService _webCrawlerMagazineLuizaService;
-
-        public WebCrawlerService(IWebCrawlerMagazineLuizaService webCrawlerMagazineLuizaService)
+        public WebCrawlerService()
         {
-            this._webCrawlerMagazineLuizaService = webCrawlerMagazineLuizaService;
         }
 
         public async Task<RotaSementeDto> ExecutarWebCrawlerAsync (string nomeProduto, Enums.Ecommercer ecommerce)
@@ -31,7 +28,7 @@ namespace WC.Domain.Services
             switch (ecommerce)
             {
                 case Enums.Ecommercer.MagazineLuiza:
-                    rotaSementeDto =  await _webCrawlerMagazineLuizaService.ExecutarWebCrawlerMagazineLuizaAsync(nomeProduto);
+                    //rotaSementeDto =  await _webCrawlerMagazineLuizaService.ExecutarWebCrawlerMagazineLuizaAsync(nomeProduto);
                     break;
                 case Enums.Ecommercer.Amazon:
                     // code block

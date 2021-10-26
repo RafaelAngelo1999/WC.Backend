@@ -21,9 +21,9 @@ namespace WC.Infra.Data.Repositories
         }
 
         // GET: api/RotaSemente
-        public async Task<ActionResult<IEnumerable<RotaSementeEntity>>> GetRotaSementeEntity()
+        public async Task<ActionResult<IEnumerable<RotaRamificadaEntity>>> GetRotaRamificadaEntity()
         {
-            return await _context.RotaSementeEntity.ToListAsync();
+            return await _context.RotaRamificadaEntity.ToListAsync();
         }
 
         // GET: api/RotaSemente/5
@@ -41,7 +41,7 @@ namespace WC.Infra.Data.Repositories
 
         public async Task<IEnumerable<RotaRamificadaEntity>> ObterRotaRamificadaNotScrapingAsync()
         {
-            var rotaRamificadaEntity =  _context.RotaRamificadaEntity.Where(c => c.WasScraping == false)
+            var rotaRamificadaEntity =_context.RotaRamificadaEntity.Where(c => c.WasScraping == false)
                     .OrderBy(x => x.Url)
                     .Take(100);
 
@@ -62,6 +62,7 @@ namespace WC.Infra.Data.Repositories
                 //return BadRequest();
             }
 
+            rotaRamificadaEntity.WasScraping = true;
             _context.Entry(rotaRamificadaEntity).State = EntityState.Modified;
 
             try
@@ -84,25 +85,25 @@ namespace WC.Infra.Data.Repositories
         }
 
         // POST: api/RotaSemente
-        //public async Task<Guid> InserirRotaSementeAsync(RotaSementeEntity rotaSementeEntity)
+        //public async Task<Guid> InserirRotaSementeAsync(RotaRamificadaEntity RotaRamificadaEntity)
         //{
 
-        //    _context.RotaSementeEntity.Add(rotaSementeEntity);
+        //    _context.RotaRamificadaEntity.Add(RotaRamificadaEntity);
         //    await _context.SaveChangesAsync();
 
-        //    return rotaSementeEntity.Id;
+        //    return RotaRamificadaEntity.Id;
         //}
 
         // DELETE: api/RotaSemente/5
-        //public async Task<IActionResult> DeleteRotaSementeEntity(Guid id)
+        //public async Task<IActionResult> DeleteRotaRamificadaEntity(Guid id)
         //{
-        //    var rotaSementeEntity = await _context.RotaSementeEntity.FindAsync(id);
-        //    if (rotaSementeEntity == null)
+        //    var RotaRamificadaEntity = await _context.RotaRamificadaEntity.FindAsync(id);
+        //    if (RotaRamificadaEntity == null)
         //    {
         //        return NotFound();
         //    }
 
-        //    _context.RotaSementeEntity.Remove(rotaSementeEntity);
+        //    _context.RotaRamificadaEntity.Remove(RotaRamificadaEntity);
         //    await _context.SaveChangesAsync();
 
         //    return NoContent();

@@ -9,7 +9,7 @@ namespace WC.Rotina
     {
         public static IHostBuilder UseServiceBaseLifetime(this IHostBuilder hostBuilder)
         {
-            return hostBuilder.ConfigureServices((hostContext, services) => services.AddSingleton<IHostLifetime, ServiceBaseLifetime>());
+            return hostBuilder.ConfigureServices((hostContext, services) => services.AddScoped<IHostLifetime, ServiceBaseLifetime>());
         }
 
         public static Task RunAsServiceAsync(this IHostBuilder hostBuilder, CancellationToken cancellationToken = default)

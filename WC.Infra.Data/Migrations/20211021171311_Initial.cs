@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WC.Infra.Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -14,7 +14,7 @@ namespace WC.Infra.Data.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Titulo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Descricao = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Model = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Categoria = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SKU = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EstoqueQuantidade = table.Column<float>(type: "real", nullable: false),
                     MediaAvaliacao = table.Column<int>(type: "int", nullable: false),
@@ -90,7 +90,7 @@ namespace WC.Infra.Data.Migrations
             migrationBuilder.InsertData(
                 table: "ImagensProduto",
                 columns: new[] { "Id", "Create_At", "Name", "ProdutoEntityId", "Update_At", "Url" },
-                values: new object[] { new Guid("d9f3de3b-54fc-42af-8b57-bb1390f6ac86"), new DateTime(2021, 9, 19, 9, 48, 34, 227, DateTimeKind.Local).AddTicks(9090), "Rafael", null, new DateTime(2021, 9, 19, 9, 48, 34, 228, DateTimeKind.Local).AddTicks(7788), "rafael.angelo@gmail.com" });
+                values: new object[] { new Guid("591bc795-32a1-48e0-ab49-37c3b87a142b"), new DateTime(2021, 10, 21, 14, 13, 11, 105, DateTimeKind.Local).AddTicks(2466), "Rafael", null, new DateTime(2021, 10, 21, 14, 13, 11, 106, DateTimeKind.Local).AddTicks(1899), "rafael.angelo@gmail.com" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ImagensProduto_ProdutoEntityId",

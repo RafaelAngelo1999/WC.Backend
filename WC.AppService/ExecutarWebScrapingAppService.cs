@@ -25,7 +25,7 @@ namespace WC.AppService
 
             foreach (var rotaRamificada in rotaRamificadas)
             {
-                var produtoDto = _webScrapingService.ExecutarWebScraping(rotaRamificada);
+                var produtoDto = await _webScrapingService.ExecutarWebScraping(rotaRamificada);
 
                 await _produtoService.InserirProdutoAsync(produtoDto);
 

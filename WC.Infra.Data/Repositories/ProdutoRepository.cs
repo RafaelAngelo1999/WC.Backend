@@ -14,7 +14,6 @@ namespace WC.Infra.Data.Repositories
     {
         private readonly AppDbContext _context;
 
-
         public ProdutoRepository(AppDbContext context)
         {
             _context = context;

@@ -24,7 +24,7 @@ namespace WC.Domain.Services
 
         public async Task<Guid> InserirProdutoAsync(ProdutoDto produtoDto)
         {
-            Validate.That(produtoDto.Name).IsNotNullOrWhiteSpace("MENSAGEM - Atributo Nome Invalido");
+            Validate.That(produtoDto.Titulo).IsNotNullOrWhiteSpace("MENSAGEM - Atributo Nome Invalido");
 
             var produtoEntity = _mapper.Map<ProdutoEntity>(produtoDto);
 

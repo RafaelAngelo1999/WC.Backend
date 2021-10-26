@@ -12,6 +12,7 @@ using System.Reflection;
 using WC.AppService;
 using WC.AppService.Interfaces;
 using WC.Domain.Interfaces;
+using WC.Domain.Interfaces.WebCrawler;
 using WC.Domain.Services;
 using WC.Infra.Data.Interfaces;
 using WC.Infra.Data.Repositories;
@@ -48,11 +49,14 @@ namespace WC.BackEnd
             services.AddScoped<IExecutarWebCrawlerAppService, ExecutarWebCrawlerAppService>();
             services.AddScoped<IWebCrawlerService, WebCrawlerService>();
 
-            services.AddScoped<IExecutarWebCrawlerAppService, ExecutarWebCrawlerAppService>();
+            services.AddScoped<IExecutarWebScrapingAppService, ExecutarWebScrapingAppService>();
             services.AddScoped<IWebScrapingService, WebScrapingService>();
 
             services.AddScoped<IRotaRamificadaService, RotaRamificadaService>();
             services.AddScoped<IRotaRamificadaRepository, RotaRamificadaRepository>();
+
+            services.AddScoped<IWebScrapingHavanService, WebScrapingHavanService>();
+            services.AddScoped<IHttpClientService, HttpClientService>();
 
             #endregion
 

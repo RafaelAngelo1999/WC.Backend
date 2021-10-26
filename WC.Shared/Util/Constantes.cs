@@ -55,9 +55,10 @@ namespace WC.Shared.Util
                     </p>
                   </body>
                 </html>";
-
-            public const string SITE_MAGINELUIZA = "https://www.magazineluiza.com.br/";
-
+        }
+        public static class Variaveis
+        {
+            public const string SITE_HAVAN = "https://www.havan.com.br/";
         }
     }
 }
