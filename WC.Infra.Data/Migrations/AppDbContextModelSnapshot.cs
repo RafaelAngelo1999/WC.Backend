@@ -19,6 +19,26 @@ namespace WC.Infra.Data.Migrations
                 .HasAnnotation("ProductVersion", "5.0.9")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("WC.Infra.Data.Entities.EcommerceEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Create_At")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Update_At")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ecommerces");
+                });
+
             modelBuilder.Entity("WC.Infra.Data.Entities.ImagemProdutoEntity", b =>
                 {
                     b.Property<Guid>("Id")
@@ -49,12 +69,32 @@ namespace WC.Infra.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("591bc795-32a1-48e0-ab49-37c3b87a142b"),
-                            Create_At = new DateTime(2021, 10, 21, 14, 13, 11, 105, DateTimeKind.Local).AddTicks(2466),
+                            Id = new Guid("f98129f9-d1f5-4f97-997b-e446e2165ae8"),
+                            Create_At = new DateTime(2021, 10, 27, 23, 54, 45, 554, DateTimeKind.Local).AddTicks(6336),
                             Name = "Rafael",
-                            Update_At = new DateTime(2021, 10, 21, 14, 13, 11, 106, DateTimeKind.Local).AddTicks(1899),
+                            Update_At = new DateTime(2021, 10, 27, 23, 54, 45, 555, DateTimeKind.Local).AddTicks(7100),
                             Url = "rafael.angelo@gmail.com"
                         });
+                });
+
+            modelBuilder.Entity("WC.Infra.Data.Entities.MarcaEntity", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Create_At")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nome")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Update_At")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Marcas");
                 });
 
             modelBuilder.Entity("WC.Infra.Data.Entities.ProdutoEntity", b =>
@@ -72,17 +112,26 @@ namespace WC.Infra.Data.Migrations
                     b.Property<string>("Descricao")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<float>("EstoqueQuantidade")
-                        .HasColumnType("real");
+                    b.Property<Guid?>("EcommerceIdId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("MediaAvaliacao")
-                        .HasColumnType("int");
+                    b.Property<string>("Marca")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("MarcaIdId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<float>("MediaAvaliacao")
+                        .HasColumnType("real");
 
                     b.Property<float>("Preco")
                         .HasColumnType("real");
 
                     b.Property<float>("PrecoPromocional")
                         .HasColumnType("real");
+
+                    b.Property<Guid?>("RotaRamificadaIdId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("SKU")
                         .HasColumnType("nvarchar(max)");
@@ -94,6 +143,12 @@ namespace WC.Infra.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EcommerceIdId");
+
+                    b.HasIndex("MarcaIdId");
+
+                    b.HasIndex("RotaRamificadaIdId");
 
                     b.ToTable("Produtos");
                 });
@@ -107,7 +162,13 @@ namespace WC.Infra.Data.Migrations
                     b.Property<DateTime>("Create_At")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("RotaSementeEntityId")
+                    b.Property<Guid?>("EcommerceIdId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("MarcaIdId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("RotaRamificadaIdId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Update_At")
@@ -121,7 +182,11 @@ namespace WC.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RotaSementeEntityId");
+                    b.HasIndex("EcommerceIdId");
+
+                    b.HasIndex("MarcaIdId");
+
+                    b.HasIndex("RotaRamificadaIdId");
 
                     b.ToTable("RotasRamificada");
                 });
@@ -135,6 +200,12 @@ namespace WC.Infra.Data.Migrations
                     b.Property<DateTime>("Create_At")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("EcommerceIdId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("MarcaIdId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Pesquisa")
                         .HasColumnType("nvarchar(max)");
 
@@ -146,6 +217,10 @@ namespace WC.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EcommerceIdId");
+
+                    b.HasIndex("MarcaIdId");
+
                     b.ToTable("RotasSemente");
                 });
 
@@ -156,11 +231,61 @@ namespace WC.Infra.Data.Migrations
                         .HasForeignKey("ProdutoEntityId");
                 });
 
+            modelBuilder.Entity("WC.Infra.Data.Entities.ProdutoEntity", b =>
+                {
+                    b.HasOne("WC.Infra.Data.Entities.EcommerceEntity", "EcommerceId")
+                        .WithMany()
+                        .HasForeignKey("EcommerceIdId");
+
+                    b.HasOne("WC.Infra.Data.Entities.MarcaEntity", "MarcaId")
+                        .WithMany()
+                        .HasForeignKey("MarcaIdId");
+
+                    b.HasOne("WC.Infra.Data.Entities.RotaRamificadaEntity", "RotaRamificadaId")
+                        .WithMany()
+                        .HasForeignKey("RotaRamificadaIdId");
+
+                    b.Navigation("EcommerceId");
+
+                    b.Navigation("MarcaId");
+
+                    b.Navigation("RotaRamificadaId");
+                });
+
             modelBuilder.Entity("WC.Infra.Data.Entities.RotaRamificadaEntity", b =>
                 {
-                    b.HasOne("WC.Infra.Data.Entities.RotaSementeEntity", null)
+                    b.HasOne("WC.Infra.Data.Entities.EcommerceEntity", "EcommerceId")
+                        .WithMany()
+                        .HasForeignKey("EcommerceIdId");
+
+                    b.HasOne("WC.Infra.Data.Entities.MarcaEntity", "MarcaId")
+                        .WithMany()
+                        .HasForeignKey("MarcaIdId");
+
+                    b.HasOne("WC.Infra.Data.Entities.RotaSementeEntity", "RotaRamificadaId")
                         .WithMany("RotasRamificadas")
-                        .HasForeignKey("RotaSementeEntityId");
+                        .HasForeignKey("RotaRamificadaIdId");
+
+                    b.Navigation("EcommerceId");
+
+                    b.Navigation("MarcaId");
+
+                    b.Navigation("RotaRamificadaId");
+                });
+
+            modelBuilder.Entity("WC.Infra.Data.Entities.RotaSementeEntity", b =>
+                {
+                    b.HasOne("WC.Infra.Data.Entities.EcommerceEntity", "EcommerceId")
+                        .WithMany()
+                        .HasForeignKey("EcommerceIdId");
+
+                    b.HasOne("WC.Infra.Data.Entities.MarcaEntity", "MarcaId")
+                        .WithMany()
+                        .HasForeignKey("MarcaIdId");
+
+                    b.Navigation("EcommerceId");
+
+                    b.Navigation("MarcaId");
                 });
 
             modelBuilder.Entity("WC.Infra.Data.Entities.ProdutoEntity", b =>

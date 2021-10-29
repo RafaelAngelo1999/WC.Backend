@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using WC.AppService;
 using WC.AppService.Interfaces;
 using WC.Domain.Interfaces;
+using WC.Domain.Interfaces.WebScraping;
 using WC.Domain.Services;
 using WC.Infra.Data.Interfaces;
 using WC.Infra.Data.Repositories;
@@ -65,6 +66,7 @@ namespace WC.Rotina.WebScraping
                     services.AddScoped<IRotaRamificadaService, RotaRamificadaService>();
                     services.AddScoped<IRotaRamificadaRepository, RotaRamificadaRepository>();
                     services.AddScoped<IWebScrapingHavanService, WebScrapingHavanService>();
+                    services.AddScoped<IWebScrapingDrogaRaiaService, WebScrapingDrogaRaiaService>();
                     services.AddScoped<IWebScrapingService, WebScrapingService>();
                     services.AddScoped<IHttpClientService, HttpClientService>();
                     #endregion

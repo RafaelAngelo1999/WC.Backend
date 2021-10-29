@@ -35,11 +35,6 @@ namespace WC.Domain.Builders
             _produto.SKU = sku;
             return this;
         }
-        public ProdutoBuilder SetEstoqueQuantidade(float estoqueQuantidade)
-        {
-            _produto.EstoqueQuantidade = estoqueQuantidade;
-            return this;
-        }
         public ProdutoBuilder SetPrecoPromocional(float precoPromocional)
         {
             _produto.PrecoPromocional = precoPromocional;

@@ -9,6 +9,8 @@ namespace WC.Domain.DTO
     public class RotaSementeDto
     {
         public Guid Id { get; set; } = Guid.NewGuid();
+        public EcommerceDto EcommerceId { get; set; }
+        public MarcaDto MarcaId { get; set; }
         public string Url { get; set; } = string.Empty;
         public string Pesquisa { get; set; } = string.Empty;
         public List<RotaRamificadaDto> RotasRamificadas { get; set; } = new List<RotaRamificadaDto>();

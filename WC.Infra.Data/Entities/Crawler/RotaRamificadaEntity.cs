@@ -9,6 +9,9 @@ namespace WC.Infra.Data.Entities
     public class RotaRamificadaEntity
     {
         public Guid Id { get; set; }
+        public RotaSementeEntity RotaRamificadaId { get; set; }
+        public EcommerceEntity EcommerceId { get; set; }
+        public MarcaEntity MarcaId { get; set; }
         public string Url { get; set; }
         public bool WasScraping { get; set; }
         public DateTime Create_At { get; set; }

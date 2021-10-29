@@ -14,9 +14,4 @@
     <ProjectReference Include="..\WC.Shared\WC.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\WebCrawler\" />
-    <Folder Include="Services\WebCrawler\" />
-  </ItemGroup>
-
 </Project>

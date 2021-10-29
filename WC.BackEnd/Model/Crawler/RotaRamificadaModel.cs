@@ -7,7 +7,9 @@ namespace WC.WebApi.Model
 {
     public class RotaRamificadaModel
     {
+        public EcommerceModel EcommerceId { get; set; }
+        public MarcaModel MarcaId { get; set; }
         public string Url { get; set; }
-        public bool WasScraping { get; set; } = false;
+        public bool WasScraping { get; set; }
     }
 }

@@ -13,6 +13,7 @@ using WC.AppService;
 using WC.AppService.Interfaces;
 using WC.Domain.Interfaces;
 using WC.Domain.Interfaces.WebCrawler;
+using WC.Domain.Interfaces.WebScraping;
 using WC.Domain.Services;
 using WC.Infra.Data.Interfaces;
 using WC.Infra.Data.Repositories;
@@ -56,6 +57,10 @@ namespace WC.BackEnd
             services.AddScoped<IRotaRamificadaRepository, RotaRamificadaRepository>();
 
             services.AddScoped<IWebScrapingHavanService, WebScrapingHavanService>();
+            services.AddScoped<IWebCrawlerHavanService, WebCrawlerHavanService>();
+
+            services.AddScoped<IWebScrapingDrogaRaiaService, WebScrapingDrogaRaiaService>();
+
             services.AddScoped<IHttpClientService, HttpClientService>();
 
             #endregion

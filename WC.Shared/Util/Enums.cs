@@ -10,7 +10,7 @@ namespace WC.Shared.Util
     {
         public enum Ecommercer
         {
-            MagazineLuiza,
+            Havan,
             Amazon,
         }
     }

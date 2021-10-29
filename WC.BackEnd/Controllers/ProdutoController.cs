@@ -84,7 +84,7 @@ namespace WC.BackEnd.Controllers
         // POST: api/Produto
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<IActionResult> InserirProdutoAsync(RotaRamificadaModel produtoModel)
+        public async Task<IActionResult> InserirProdutoAsync(ProdutoModel produtoModel)
         {
             var produtoDto = _mapper.Map<ProdutoDto>(produtoModel);
 

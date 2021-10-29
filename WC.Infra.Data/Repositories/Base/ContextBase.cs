@@ -17,6 +17,8 @@ namespace Infrastructure.Repository.Generics
         public DbSet<ImagemProdutoEntity> ImagensProdutos { get; set; }
         public DbSet<RotaRamificadaEntity> RotaRamificadaEntity { get; set; }
         public DbSet<RotaSementeEntity> RotaSementeEntity { get; set; }
+        public DbSet<MarcaEntity> MarcaEntity { get; set; }
+        public DbSet<EcommerceEntity> EcommerceEntity { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
