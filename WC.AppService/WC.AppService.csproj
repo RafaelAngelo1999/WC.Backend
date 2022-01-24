@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WC.Domain\WC.Domain.csproj" />
+    <ProjectReference Include="..\WC.Infra.Data\WC.Infra.Data.csproj" />
+  </ItemGroup>
+
+</Project>
