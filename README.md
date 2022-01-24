@@ -1,5 +1,12 @@
 # WC.Backend
 
+## Objetivo do projeto
+
+- Desenvolver uma aplicação para extração dos dados da página do produto;
+- Analisar e mapear os principais atributos e métricas para essa extração;
+- Modelar e estruturar tais dados dentro de um banco de dados relacional ;
+- Importar base de dados para software de apresentação, e construir dashboards personalizados para a exposição dos dados.
+
 ## Arquitetura do projeto
 
 A estrutura utilizada para a implementação da captura dos dados está disposta em 4 camadas não lineares: web crawler, API, web scraper e banco de dados. Onde as informações dos produtos foram coletadas no e-commerce da Havan, durante o segundo semestre de 2021. A arquitetura foi desenvolvida a partir do paradigma do DDD (Domain Driven Design) no qual a aplicação é orientada ao domínio, baseado em um conjunto de ideias, conhecimentos e processos de negócios. Tendo como pontos positivos:  
@@ -21,5 +28,3 @@ A API e os serviços de crawler e scraping foram escritos em .NET Core 5 impleme
 ## Resultados
 
 Foram coletados através da aplicação disponível no repositório https://bit.ly/AplicacaoWebCrawler, realizada de acordo com as métricas levantadas. O dashboard desses dados estão publicados em https://bit.ly/DashboardWebCrawler, onde  foram extraídos no total de 6281 produtos de 18 marcas distintas.
-
-
